@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Vasiliu_Adrian_Lab2.Models..PublisherIndexData>
+﻿@model Vasiliu_Adrian_Lab2.Models.LibraryViewModels.PublisherIndexData
 
 @{
     ViewData["Title"] = "Publishers";
@@ -25,8 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        @{
-            foreach (var item in Model.Publishers)
+        @foreach (var item in Model.Publishers)
             {
                 string selectedRow = "";
                 if (item.ID == (int?)ViewData["PublisherID"])
@@ -41,10 +40,9 @@
                         @Html.DisplayFor(modelItem => item.Adress)
                     </td>
                     <td>
-                        @{
-                            foreach (var book in item.PublishedBooks)
+                        @{foreach (var book in item.PublishedBooks)
                             {
-                                @book.Book.Id @: @book.Book.Title <br />
+                                @book.Book.Id @: @book.Book.Title <br/>
                             }
                         }
                     </td>
@@ -56,7 +54,6 @@
                     </td>
                 </tr>
             }
-        }
     </tbody>
 </table>
 
@@ -74,13 +71,13 @@
         @foreach (var item in Model.Books)
         {
             string selectedRow = "";
-            if (item.ID == (int?)ViewData["BookID"])
+            if (item.Id == (int?)ViewData["BookID"])
             {
                 selectedRow = "success";
             }
             <tr class="@selectedRow">
                 <td>
-                    @Html.ActionLink("Select", "Index", new { bookID = item.ID })
+                    @Html.ActionLink("Select", "Index", new { bookID = item.Id })
                 </td>
                 <td>
                     @item.Title

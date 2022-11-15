@@ -46,7 +46,7 @@ namespace Vasiliu_Adrian_Lab2.Controllers
                 x => x.Id == bookID).Single().Orders;
             }
 
-            return View(await _context.Publishers.ToListAsync());
+            return View(viewModel);
         }
 
         // GET: Publishers/Details/5
